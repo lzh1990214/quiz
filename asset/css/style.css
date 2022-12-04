@@ -1,0 +1,53 @@
+nav ul {
+  display:flex;
+  justify-content: space-between;
+}
+
+section {
+  display: block;
+  width: 70%;
+  margin: 20px auto;
+}
+
+#startPage {
+  display: block;
+  text-align: center;
+  line-height: 200%;
+  background-color: bisque;
+  padding: 10px;
+}
+
+.questionPage {
+    display: block;
+    text-align: center;
+    line-height: 200%;
+    background-color: bisque;
+    padding: 10px;
+  }
+
+section li {
+  background-color: rgb(69, 69, 69);
+  color: white;
+  padding: 10px;
+  margin: 20px;
+}
+
+#recordScore {
+  display: block;
+  text-align: center;
+  line-height: 200%;
+  background-color: bisque;
+  padding: 10px;
+}
+
+#scoreBoard {
+  text-align: center;
+  line-height: 200%;
+  background-color: bisque;
+  padding: 10px;
+}
+
+#scoreBoard p {
+  background-color: white;
+  
+}

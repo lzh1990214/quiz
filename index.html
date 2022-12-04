@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./asset/css/reset.css" />
+  <link rel="stylesheet" href="./asset/css/style.css" />
+  <title>Fun Quiz</title>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <ul id="navBar">
+        <li id="navScore">View high Scores</li>
+        <li id="timer">Time remaining:</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="startPage">
+      <h1>Fun Quiz</h1>
+      <p>Click the button below to take the quiz</p>
+      <button id="startButton">Start</button>
+      
+    </section>
+
+    <section class="questionPage" id="q-1" style="display: none;">
+      <h1>Q1: Which one is a cat?</h1>
+      <ul>
+        <li value="correct">A: Cat</li>
+        <li>B: Dog</li>
+        <li>C: Rabbit</li>
+        <li>D: Bird</li>
+      </ul>
+    </section>
+
+    <section class="questionPage" id="q-2" style="display: none;">
+      <h1>Q2: Which one is a rabbit?</h1>
+      <ul>
+        <li>A: Cat</li>
+        <li>B: Dog</li>
+        <li value="correct">C: Rabbit</li>
+        <li>D: Bird</li>
+      </ul>
+    </section>
+
+    <section class="questionPage" id="q-3" style="display: none;">
+      <h1>Q3: Which one is a bird?</h1>
+      <ul>
+        <li>A: Cat</li>
+        <li>B: Dog</li>
+        <li>C: Rabbit</li>
+        <li value="correct">D: Bird</li>
+      </ul>
+    </section>
+
+    <section id="recordScore" style="display: none;">
+      <h1>All done</h1>
+      <form>
+        <label for="enterName">Enter initials:</label>
+        <textarea name="enterName" id="enterName"></textarea>
+      </form>
+      <button id="submitButton">Submit</button> 
+    </section>
+
+    <section id="scoreBoard" style="display: none;">
+      <h1>High scores</h1>
+      <div>
+        <p>Name:<span id="savedName"></span></p>
+        <p>Score:<span id="savedScore"></span></p>
+      </div>
+      <button id="goBack">Go back</button>
+      <button id="clearScore">Clear high scores</button>
+  
+    </section>
+    
+
+
+  </main>
+  
+
+  
+
+  <script src="./asset/js/script.js"></script>
+
+</body>
+</html>
