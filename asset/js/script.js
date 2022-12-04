@@ -85,10 +85,13 @@ function saveScore() {
 function renderScore() {
     var finalScore = JSON.parse(localStorage.getItem("playerInfo"));
     if (finalScore !== null) {
-        document.getElementById("enterName").innerHTML = finalScore.playerName;
-        // can't figure out how to print player name on the score page.
+        document.getElementById("savedName").innerHTML = finalScore.playerName;
+        // figured out how to print player name on the score page.
+        console.log(finalScore.playerName)
     } else {
         return;
     };
 }
+
+
 
