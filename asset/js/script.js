@@ -15,12 +15,11 @@ var result = document.createElement('p')
 var questionPage = document.querySelector('.questionPage')
 var timeLeft = document.getElementById('timeLeft')
 var feedbackEl = document.getElementById('feedback')
-
 var playerName = document.getElementById('enterName')
-var score
 
-var timer;
-var timerCount = 100;
+var score
+var timer
+var timerCount
 
 startButton.addEventListener('click', function () {
     startPage.setAttribute('style', 'display:none');
@@ -92,7 +91,7 @@ q3.addEventListener('click', function (event) {
 
     };
     stopTimer();
-    
+
 })
 
 submitButton.addEventListener('click', function (event) {
@@ -101,7 +100,7 @@ submitButton.addEventListener('click', function (event) {
     recordScore.setAttribute('style', 'display:none');
     scoreBoard.setAttribute('style', 'display:block');
     renderScore();
-    navBar.setAttribute('class','navigation hide');
+    navBar.setAttribute('class', 'navigation hide');
 })
 
 goBack.addEventListener('click', function () {
