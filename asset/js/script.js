@@ -18,7 +18,7 @@ var playerName = document.getElementById('enterName')
 var score;
 
 var timer;
-var timerCount;
+var timerCount = 100;
 
 startButton.addEventListener('click', function () {
     startPage.setAttribute('style', 'display:none');
@@ -91,7 +91,8 @@ goBack.addEventListener('click', function () {
 
 function saveScore() {
     var playerInfo = {
-        playerName: playerName.value.trim()
+        playerName: playerName.value.trim(),
+        score: timerCount
     };
     localStorage.setItem("playerInfo", JSON.stringify(playerInfo));
 }
@@ -100,31 +101,38 @@ function renderScore() {
     var finalScore = JSON.parse(localStorage.getItem("playerInfo"));
     if (finalScore !== null) {
         document.getElementById("savedName").innerHTML = finalScore.playerName;
+        document.getElementById("savedScore").innerHTML = finalScore.score;
         // figured out how to print player name on the score page.
-        console.log(finalScore.playerName)
+        console.log(finalScore.playerName);
+        console.log(finalScore.score);
     } else {
         return;
     };
 }
 
+function clearScore(){
+    
+}
 
 function startTimer() {
 
     timer = setInterval(function () {
         timerCount--;
         timeLeft.textContent = timerCount;
-        
+
         if (timerCount === 0) {
             score = timeLeft;
             clearInterval(timer);
-        }; 
+        };
 
-        console.log (timerCount);
+        console.log(timerCount);
     }, 1000);
 }
 
-function stopTimer(){
+function stopTimer() {
     clearInterval(timer);
+    console.log(timerCount);
+    return timerCount;
 }
 
 console.log(timerCount)
