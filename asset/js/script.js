@@ -1,4 +1,5 @@
 var navScore = document.getElementById('navScore')
+var navBar = document.getElementById('navBar')
 var timer = document.getElementById('timer')
 var startButton = document.getElementById('startButton')
 var startPage = document.getElementById('startPage')
@@ -13,9 +14,10 @@ var clear = document.getElementById('clearScore')
 var result = document.createElement('p')
 var questionPage = document.querySelector('.questionPage')
 var timeLeft = document.getElementById('timeLeft')
+var feedbackEl = document.getElementById('feedback')
 
 var playerName = document.getElementById('enterName')
-var score;
+var score
 
 var timer;
 var timerCount = 100;
@@ -34,15 +36,17 @@ q1.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             q2.setAttribute('style', 'display:block');
-            // can't figure out how to appendChild "result" on each page
-            //result.textContent = "Correct !"
-            //questionPage.appendchild(result);
+            feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
             q2.setAttribute('style', 'display:block');
-            //result.textContent = "Wrong !"
-            //questionPage.appendchild(result);
+            feedbackEl.textContent = 'Wrong !';
         }
+
+        feedbackEl.setAttribute('class', 'feedback');
+        setTimeout(function () {
+            feedbackEl.setAttribute('class', 'feedback hide');
+        }, 1000);
     }
 })
 
@@ -53,10 +57,17 @@ q2.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             q3.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
             q3.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Wrong !';
         }
+
+        feedbackEl.setAttribute('class', 'feedback');
+        setTimeout(function () {
+            feedbackEl.setAttribute('class', 'feedback hide');
+        }, 1000);
     }
 })
 
@@ -67,12 +78,21 @@ q3.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             recordScore.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
             recordScore.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Wrong !';
         }
+
+        feedbackEl.setAttribute('class', 'feedback');
+        setTimeout(function () {
+            feedbackEl.setAttribute('class', 'feedback hide');
+        }, 1000);
+
     };
     stopTimer();
+    
 })
 
 submitButton.addEventListener('click', function (event) {
@@ -81,6 +101,7 @@ submitButton.addEventListener('click', function (event) {
     recordScore.setAttribute('style', 'display:none');
     scoreBoard.setAttribute('style', 'display:block');
     renderScore();
+    navBar.setAttribute('class','navigation hide');
 })
 
 goBack.addEventListener('click', function () {
@@ -110,9 +131,12 @@ function renderScore() {
     };
 }
 
-function clearScore(){
-    
-}
+
+clear.addEventListener('click', function () {
+    document.getElementById("savedName").innerHTML = '';
+    document.getElementById("savedScore").innerHTML = '';
+})
+
 
 function startTimer() {
 
@@ -131,7 +155,6 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(timer);
-    console.log(timerCount);
     return timerCount;
 }
 

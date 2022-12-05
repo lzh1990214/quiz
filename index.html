@@ -13,7 +13,7 @@
 
   <header>
     <nav>
-      <ul id="navBar">
+      <ul id="navBar" class="navigation">
         <li id="navScore">View high Scores</li>
         <li id="timer">Time: <span id="timeLeft">100</span></li>
       </ul>
@@ -26,7 +26,7 @@
       <h1>Fun Quiz</h1>
       <p>Click the button below to take the quiz</p>
       <button id="startButton">Start</button>
-      
+
     </section>
 
     <section class="questionPage" id="q-1" style="display: none;">
@@ -65,7 +65,7 @@
         <label for="enterName">Enter initials:</label>
         <textarea name="enterName" id="enterName" placeholder="enter your name"></textarea>
       </form>
-      <button id="submitButton">Submit</button> 
+      <button id="submitButton">Submit</button>
     </section>
 
     <section id="scoreBoard" style="display: none;">
@@ -76,17 +76,15 @@
       </div>
       <button id="goBack">Go back</button>
       <button id="clearScore">Clear high scores</button>
-  
-    </section>
-    
 
+    </section>
+
+    <div id="feedback" class="feedback hide"></div>
 
   </main>
-  
-
-  
 
   <script src="./asset/js/script.js"></script>
 
 </body>
+
 </html>
