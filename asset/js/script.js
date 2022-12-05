@@ -15,11 +15,15 @@ var result = document.createElement('p')
 var questionPage = document.querySelector('.questionPage')
 var timeLeft = document.getElementById('timeLeft')
 var feedbackEl = document.getElementById('feedback')
+
 var playerName = document.getElementById('enterName')
+var playerScoreEl = document.getElementById('playerScore')
 
 var score
 var timer
 var timerCount
+var playerScoreSum = []
+
 
 startButton.addEventListener('click', function () {
     startPage.setAttribute('style', 'display:none');
@@ -110,30 +114,45 @@ goBack.addEventListener('click', function () {
 
 
 function saveScore() {
-    var playerInfo = {
-        playerName: playerName.value.trim(),
-        score: timerCount
-    };
-    localStorage.setItem("playerInfo", JSON.stringify(playerInfo));
+    // set object 'playerInfo' with two inputs: playerName and score
+    var playerInfo = playerName.value.trim() + '-' + timerCount;
+    // push 'playerInfo' into array 'playerScoreSum'.
+    playerScoreSum.push(playerInfo);
+    localStorage.setItem("playerScoreSum", JSON.stringify(playerScoreSum));
 }
 
 function renderScore() {
-    var finalScore = JSON.parse(localStorage.getItem("playerInfo"));
-    if (finalScore !== null) {
-        document.getElementById("savedName").innerHTML = finalScore.playerName;
-        document.getElementById("savedScore").innerHTML = finalScore.score;
-        // figured out how to print player name on the score page.
-        console.log(finalScore.playerName);
-        console.log(finalScore.score);
-    } else {
-        return;
-    };
+
+    var playerScoreSum = JSON.parse(localStorage.getItem("playerScoreSum"));
+    playerScoreEl.innerHTML = "";
+
+    // Render a new li for each playerInfo
+    for (var i = 0; i < playerScoreSum.length; i++) {
+
+        var playerScoreSum = playerScoreSum[i];
+        var li = document.createElement("li");
+        li.textContent = playerScoreSum;
+        li.setAttribute("data-index", i);
+        playerScoreEl.appendChild(li);
+    }
+
+
+    // if (finalScore !== null) {
+    //     document.getElementById("savedName").innerHTML = finalScore.playerName;
+    //     document.getElementById("savedScore").innerHTML = finalScore.score;
+    //     // figured out how to print player name on the score page.
+    //     console.log(finalScore.playerName);
+    //     console.log(finalScore.score);
+    // } else {
+    //     return;
+    // };
 }
 
 
 clear.addEventListener('click', function () {
-    document.getElementById("savedName").innerHTML = '';
-    document.getElementById("savedScore").innerHTML = '';
+    // document.getElementById("savedName").innerHTML = '';
+    // document.getElementById("savedScore").innerHTML = '';
+   playerScoreEl.removeChild();
 })
 
 
