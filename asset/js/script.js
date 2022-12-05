@@ -12,14 +12,19 @@ var goBack = document.getElementById('goBack')
 var clear = document.getElementById('clearScore')
 var result = document.createElement('p')
 var questionPage = document.querySelector('.questionPage')
+var timeLeft = document.getElementById('timeLeft')
 
 var playerName = document.getElementById('enterName')
-var score = document.getElementById('timer')
+var score;
 
+var timer;
+var timerCount;
 
 startButton.addEventListener('click', function () {
     startPage.setAttribute('style', 'display:none');
     q1.setAttribute('style', 'display:block');
+    timerCount = 100;
+    startTimer();
 })
 
 q1.addEventListener('click', function (event) {
@@ -33,6 +38,8 @@ q1.addEventListener('click', function (event) {
             //result.textContent = "Correct !"
             //questionPage.appendchild(result);
         } else {
+            this.setAttribute('style', 'display:none');
+            q2.setAttribute('style', 'display:block');
             //result.textContent = "Wrong !"
             //questionPage.appendchild(result);
         }
@@ -46,6 +53,9 @@ q2.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             q3.setAttribute('style', 'display:block');
+        } else {
+            this.setAttribute('style', 'display:none');
+            q3.setAttribute('style', 'display:block');
         }
     }
 })
@@ -57,8 +67,12 @@ q3.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             recordScore.setAttribute('style', 'display:block');
+        } else {
+            this.setAttribute('style', 'display:none');
+            recordScore.setAttribute('style', 'display:block');
         }
-    }
+    };
+
 })
 
 submitButton.addEventListener('click', function (event) {
@@ -76,9 +90,9 @@ goBack.addEventListener('click', function () {
 
 
 function saveScore() {
-    var playerInfo =  {
+    var playerInfo = {
         playerName: playerName.value.trim()
-};
+    };
     localStorage.setItem("playerInfo", JSON.stringify(playerInfo));
 }
 
@@ -93,5 +107,18 @@ function renderScore() {
     };
 }
 
+
+function startTimer() {
+
+    timer = setInterval(function () {
+        timerCount--;
+        timeLeft.textContent = timerCount;
+        if (timerCount === 0) {
+            score = timeLeft;
+            clearInterval(timer);
+        };
+    }, 1000);
+
+}
 
 
