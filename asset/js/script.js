@@ -72,7 +72,7 @@ q3.addEventListener('click', function (event) {
             recordScore.setAttribute('style', 'display:block');
         }
     };
-
+    stopTimer();
 })
 
 submitButton.addEventListener('click', function (event) {
@@ -113,12 +113,20 @@ function startTimer() {
     timer = setInterval(function () {
         timerCount--;
         timeLeft.textContent = timerCount;
+        
         if (timerCount === 0) {
             score = timeLeft;
             clearInterval(timer);
-        };
-    }, 1000);
+        }; 
 
+        console.log (timerCount);
+    }, 1000);
 }
+
+function stopTimer(){
+    clearInterval(timer);
+}
+
+console.log(timerCount)
 
 
