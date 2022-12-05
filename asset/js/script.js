@@ -67,7 +67,8 @@ q2.addEventListener('click', function (event) {
         } else {
             this.setAttribute('style', 'display:none');
             q3.setAttribute('style', 'display:block');
-            feedbackEl.textContent = 'Wrong !';
+            feedbackEl.textContent = 'Wrong, You lost 20s !';
+            timerCount = timerCount - 20;
         }
 
         feedbackEl.setAttribute('class', 'feedback');
@@ -88,7 +89,8 @@ q3.addEventListener('click', function (event) {
         } else {
             this.setAttribute('style', 'display:none');
             recordScore.setAttribute('style', 'display:block');
-            feedbackEl.textContent = 'Wrong !';
+            feedbackEl.textContent = 'Wrong, You lost 20s !';
+            timerCount = timerCount - 20;
         }
 
         feedbackEl.setAttribute('class', 'feedback');
@@ -101,6 +103,7 @@ q3.addEventListener('click', function (event) {
 
 })
 
+
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
     saveScore();
@@ -109,6 +112,8 @@ submitButton.addEventListener('click', function (event) {
     renderScore();
     navBar.setAttribute('class', 'navigation hide');
 })
+
+
 
 goBack.addEventListener('click', function () {
     scoreBoard.setAttribute('style', 'display:none');
@@ -139,18 +144,6 @@ function renderScore() {
         li.setAttribute("data-index", i);
         playerScoreEl.appendChild(li);
     };
-
-    console.log(playerScoreEl)
-    console.log(playerScoreSum)
-    // if (finalScore !== null) {
-    //     document.getElementById("savedName").innerHTML = finalScore.playerName;
-    //     document.getElementById("savedScore").innerHTML = finalScore.score;
-    //     // figured out how to print player name on the score page.
-    //     console.log(finalScore.playerName);
-    //     console.log(finalScore.score);
-    // } else {
-    //     return;
-    // };
 }
 
 
@@ -175,7 +168,6 @@ function startTimer() {
             clearInterval(timer);
         };
 
-        console.log(timerCount);
     }, 1000);
 }
 
@@ -184,6 +176,8 @@ function stopTimer() {
     return timerCount;
 }
 
-console.log(timerCount)
+
+
+
 
 

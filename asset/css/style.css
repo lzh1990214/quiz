@@ -10,7 +10,17 @@
   text-align: center;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
+}
+
+#enterName {
+width: 300px;
+  
+}
 
 nav ul {
   display:flex;
