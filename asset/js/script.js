@@ -23,6 +23,7 @@ var score
 var timer
 var timerCount
 var playerScoreSum = []
+var li
 
 
 startButton.addEventListener('click', function () {
@@ -115,7 +116,7 @@ goBack.addEventListener('click', function () {
 
 function saveScore() {
     // set object 'playerInfo' with two inputs: playerName and score
-    var playerInfo = playerName.value.trim() + '-' + timerCount;
+    var playerInfo = playerName.value.trim() + ' - ' + timerCount;
     // push 'playerInfo' into array 'playerScoreSum'.
     playerScoreSum.push(playerInfo);
     localStorage.setItem("playerScoreSum", JSON.stringify(playerScoreSum));
@@ -129,14 +130,14 @@ function renderScore() {
     // Render a new li for each playerInfo
     for (var i = 0; i < playerScoreSum.length; i++) {
 
-        var playerScoreSum = playerScoreSum[i];
         var li = document.createElement("li");
-        li.textContent = playerScoreSum;
+        li.textContent = playerScoreSum[i];
         li.setAttribute("data-index", i);
         playerScoreEl.appendChild(li);
-    }
+    };
 
-
+    console.log(playerScoreEl)
+    console.log(playerScoreSum)
     // if (finalScore !== null) {
     //     document.getElementById("savedName").innerHTML = finalScore.playerName;
     //     document.getElementById("savedScore").innerHTML = finalScore.score;
@@ -152,7 +153,8 @@ function renderScore() {
 clear.addEventListener('click', function () {
     // document.getElementById("savedName").innerHTML = '';
     // document.getElementById("savedScore").innerHTML = '';
-   playerScoreEl.removeChild();
+   localStorage.clear();
+   document.querySelectorAll(li) = '';
 })
 
 
