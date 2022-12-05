@@ -44,13 +44,15 @@ q1.addEventListener('click', function (event) {
         } else {
             this.setAttribute('style', 'display:none');
             q2.setAttribute('style', 'display:block');
-            feedbackEl.textContent = 'Wrong !';
+            feedbackEl.textContent = 'Wrong, You lost 20s !';
+            timerCount = timerCount - 20;
         }
 
         feedbackEl.setAttribute('class', 'feedback');
         setTimeout(function () {
             feedbackEl.setAttribute('class', 'feedback hide');
         }, 1000);
+
     }
 })
 
@@ -111,6 +113,8 @@ submitButton.addEventListener('click', function (event) {
 goBack.addEventListener('click', function () {
     scoreBoard.setAttribute('style', 'display:none');
     startPage.setAttribute('style', 'display:block');
+    navBar.setAttribute('class', 'navigation');
+    timeLeft.textContent = "100";
 })
 
 
@@ -153,9 +157,11 @@ function renderScore() {
 clear.addEventListener('click', function () {
     // document.getElementById("savedName").innerHTML = '';
     // document.getElementById("savedScore").innerHTML = '';
-   localStorage.clear();
-   document.querySelectorAll(li) = '';
-})
+    localStorage.clear();
+    document.querySelector("#playerScore").style.display = 'none';
+    document.querySelector("#clearScore").style.display = 'none';
+}
+)
 
 
 function startTimer() {
