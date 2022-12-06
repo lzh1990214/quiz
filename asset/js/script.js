@@ -148,14 +148,10 @@ function renderScore() {
 
 
 clear.addEventListener('click', function () {
-    // document.getElementById("savedName").innerHTML = '';
-    // document.getElementById("savedScore").innerHTML = '';
     localStorage.clear();
-    document.querySelector("#playerScore").style.display = 'none';
-    document.querySelector("#clearScore").style.display = 'none';
+    playerScoreEl.innerHTML = "";
 }
 )
-
 
 function startTimer() {
 
