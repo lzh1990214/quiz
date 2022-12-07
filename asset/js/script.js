@@ -6,6 +6,8 @@ var startPage = document.getElementById('startPage')
 var q1 = document.getElementById('q-1')
 var q2 = document.getElementById('q-2')
 var q3 = document.getElementById('q-3')
+var q4 = document.getElementById('q-4')
+var q5 = document.getElementById('q-5')
 var recordScore = document.getElementById('recordScore')
 var submitButton = document.getElementById('submitButton')
 var scoreBoard = document.getElementById('scoreBoard')
@@ -15,7 +17,6 @@ var result = document.createElement('p')
 var questionPage = document.querySelector('.questionPage')
 var timeLeft = document.getElementById('timeLeft')
 var feedbackEl = document.getElementById('feedback')
-
 var playerName = document.getElementById('enterName')
 var playerScoreEl = document.getElementById('playerScore')
 
@@ -31,7 +32,11 @@ startButton.addEventListener('click', function () {
     q1.setAttribute('style', 'display:block');
     timerCount = 100;
     startTimer();
+
+    // clear the names entered in the <textarea></textarea> in HTML.
+    playerName.value = "";
 })
+
 
 q1.addEventListener('click', function (event) {
     var element = event.target;
@@ -144,8 +149,8 @@ function renderScore() {
         li.setAttribute("data-index", i);
         playerScoreEl.appendChild(li);
     };
-}
 
+}
 
 clear.addEventListener('click', function () {
     localStorage.clear();
