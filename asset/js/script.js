@@ -173,6 +173,7 @@ goBack.addEventListener('click', function () {
     startPage.setAttribute('style', 'display:block');
     navBar.setAttribute('class', 'navigation');
     clear.setAttribute('style', '');
+    stopTimer();
     timeLeft.textContent = "100";
 })
 
@@ -221,6 +222,8 @@ function renderScore() {
 }
 
 clear.addEventListener('click', function () {
+    stopTimer();
+    timeLeft.textContent = "100";
     // clear all local storage data
     localStorage.clear();
     // clear total score on the board
