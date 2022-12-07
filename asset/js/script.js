@@ -180,6 +180,10 @@ goBack.addEventListener('click', function () {
 navScore.addEventListener('click', function (event) {
     var element = event.target;
     if (element.matches('li')) {
+        // stop the timer when getting out of the quiz
+        stopTimer();
+        timeLeft.textContent = "100";
+        
         startPage.setAttribute('style', 'display:none');
         recordScore.setAttribute('style', 'display:none');
         q1.setAttribute('style', 'display:none');
