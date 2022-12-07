@@ -149,6 +149,7 @@ function renderScore() {
 
 clear.addEventListener('click', function () {
     localStorage.clear();
+    playerScoreSum = [];
     playerScoreEl.innerHTML = "";
 }
 )
