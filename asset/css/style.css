@@ -1,30 +1,61 @@
+html {
+  background-color: #f6e652;
+}
+
 .hide {
   display: none;
 }
 
-.navigation {
-  margin: 20px, 20px;
-}
-
-#feedback {
-  text-align: center;
-}
-
-form {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-}
-
-#enterName {
-width: 300px;
-  
+nav {
+  margin: 30px;
 }
 
 nav ul {
-  display:flex;
+  display: flex;
   justify-content: space-between;
+}
+
+#navScore {
+  cursor: pointer;
+}
+
+#navScore:hover {
+  background-color: #f6bd20;
+}
+
+#startPage {
+  display: block;
+  text-align: center;
+  line-height: 200%;
+  border: 6px solid #623108;
+  border-radius: 21px;
+
+
+  background-color: white;
+  padding: 10px;
+}
+
+#startPage p {
+  font-size: 120%;
+  margin-bottom: 20px;
+}
+
+#startButton {
+  background-color: #e65a41;
+  border: none;
+  color: white;
+  padding: 20px 50px;
+  text-align: center;
+  font-size: 120%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 200%;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 section {
@@ -33,44 +64,126 @@ section {
   margin: 20px auto;
 }
 
-#startPage {
-  display: block;
-  text-align: center;
-  line-height: 200%;
-  background-color: bisque;
-  padding: 10px;
-}
-
-.questionPage {
-    display: block;
-    text-align: center;
-    line-height: 200%;
-    background-color: bisque;
-    padding: 10px;
-  }
-
 section li {
-  background-color: rgb(69, 69, 69);
+  background-color: #737383;
   color: white;
   padding: 10px;
   margin: 20px;
+  width: 50%;
 }
 
-#recordScore {
+section ul :hover {
+  background-color: #e65a41;
+}
+
+.questionPage {
   display: block;
   text-align: center;
   line-height: 200%;
-  background-color: bisque;
+  background-color: white;
   padding: 10px;
+  border: 6px solid #623108;
+  border-radius: 21px;
 }
+
+.questionPage ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+#recordScore {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  line-height: 200%;
+  background-color: white;
+  padding: 10px;
+  border: 6px solid #623108;
+  border-radius: 21px;
+}
+
+#recordScore form {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 120%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#enterName {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 250px;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 5px solid #bababc;
+  border-radius: 12px;
+  background-color: #f8f8f8;
+  font-size: 120%;
+  resize: none;
+}
+
+#submitButton {
+  background-color: #e65a41;
+  border: none;
+  color: white;
+  padding: 20px 50px;
+  text-align: center;
+  font-size: 120%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+#scoreBoard button {
+  background-color: #e65a41;
+  border: none;
+  color: white;
+  padding: 20px 50px;
+  text-align: center;
+  font-size: 120%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+
+#feedback {
+  text-align: center;
+  font-size: 150%;
+  color: #c52018;
+}
+
 
 #scoreBoard {
   text-align: center;
   line-height: 200%;
-  background-color: bisque;
+  background-color: white;
   padding: 10px;
+  margin-top: 100px;
+  border: 6px solid #623108;
+  border-radius: 21px;
 }
 
 #scoreBoard p {
   background-color: white;
+}
+
+#scoreBoard ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section {
+  margin-top: 100px;
 }

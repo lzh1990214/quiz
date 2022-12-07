@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./asset/css/reset.css" />
   <link rel="stylesheet" href="./asset/css/style.css" />
-  <title>Fun Quiz</title>
+  <title>Pokémon Trivia Quiz</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
   <header>
     <nav>
       <ul id="navBar" class="navigation">
-        <li id="navScore">View high Scores</li>
+        <li id="navScore">View High Scores</li>
         <li id="timer">Time: <span id="timeLeft">100</span></li>
       </ul>
     </nav>
@@ -23,58 +23,78 @@
   <main>
 
     <section id="startPage">
-      <h1>Fun Quiz</h1>
-      <p>Click the button below to take the quiz</p>
+      <h1>Pokémon Trivia Quiz</h1>
+      <p>Click the button below to test your knowlege</p>
       <button id="startButton">Start</button>
 
     </section>
 
     <section class="questionPage" id="q-1" style="display: none;">
-      <h1>Q1: Which one is a cat?</h1>
+      <h1>#1: Which one is the most effective Poké Ball?</h1>
       <ul>
-        <li value="correct">A: Cat</li>
-        <li>B: Dog</li>
-        <li>C: Rabbit</li>
-        <li>D: Bird</li>
+        <li value="correct">Master Ball</li>
+        <li>Ultra Ball</li>
+        <li>Great Ball</li>
+        <li>Super Ball</li>
       </ul>
     </section>
 
     <section class="questionPage" id="q-2" style="display: none;">
-      <h1>Q2: Which one is a rabbit?</h1>
+      <h1>#2: What device do trainers use to access a Pokémon database?</h1>
       <ul>
-        <li>A: Cat</li>
-        <li>B: Dog</li>
-        <li value="correct">C: Rabbit</li>
-        <li>D: Bird</li>
+        <li>Pokémon Training Chart</li>
+        <li>Pokémon Battle Trainers</li>
+        <li value="correct">Pokédex</li>
+        <li>Pokélist</li>
       </ul>
     </section>
 
     <section class="questionPage" id="q-3" style="display: none;">
-      <h1>Q3: Which one is a bird?</h1>
+      <h1>#3: Your opponent sends out squirtle, who will you send out?</h1>
       <ul>
-        <li>A: Cat</li>
-        <li>B: Dog</li>
-        <li>C: Rabbit</li>
-        <li value="correct">D: Bird</li>
+        <li>Charizard</li>
+        <li>Mew</li>
+        <li>Onix</li>
+        <li value="correct">Bulbasaur</li>
+      </ul>
+    </section>
+
+    <section class="questionPage" id="q-4" style="display: none;">
+      <h1>#4: How many years did Ash take to win the Poké world champion?</h1>
+      <ul>
+        <li value="correct">25 years</li>
+        <li>2 years</li>
+        <li>10 years</li>
+        <li>12 years</li>
+      </ul>
+    </section>
+
+    <section class="questionPage" id="q-5" style="display: none;">
+      <h1>#5: Which item can prevent the holder from fainting in one hit?</h1>
+      <ul>
+        <li>Choice Band</li>
+        <li>Choice Specs</li>
+        <li value="correct">Focus Sash</li>
+        <li>Life Orb</li>
       </ul>
     </section>
 
     <section id="recordScore" style="display: none;">
-      <h1>All done</h1>
+      <h1>Well Done</h1>
       <form>
-        <label for="enterName">Enter initials:</label>
+        <label for="enterName">Enter Your Name:</label>
         <textarea name="enterName" id="enterName" placeholder="enter your name"></textarea>
       </form>
       <button id="submitButton">Submit</button>
     </section>
 
     <section id="scoreBoard" style="display: none;">
-      <h1>High scores</h1>
+      <h1>High Scores</h1>
 
       <ul id="playerScore"></ul>
 
-      <button id="goBack">Go back</button>
-      <button id="clearScore">Clear high scores</button>
+      <button id="goBack">Go Back</button>
+      <button id="clearScore">Clear High Scores</button>
 
     </section>
 

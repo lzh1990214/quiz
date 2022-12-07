@@ -28,16 +28,18 @@ var li
 
 
 startButton.addEventListener('click', function () {
+    // hide startPage by changing the display style to 'none'
     startPage.setAttribute('style', 'display:none');
+    // show question #1 by changing the display style to 'block'
     q1.setAttribute('style', 'display:block');
+    // set total time count
     timerCount = 100;
     startTimer();
-
     // clear the names entered in the <textarea></textarea> in HTML.
     playerName.value = "";
 })
 
-
+// create a 'click' event allow to click target answers
 q1.addEventListener('click', function (event) {
     var element = event.target;
     if (element.matches('li')) {
@@ -45,19 +47,20 @@ q1.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             q2.setAttribute('style', 'display:block');
+            // send feedback 'correct!'
             feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
             q2.setAttribute('style', 'display:block');
+            // send feedback of wrong answer and reduce 20s from the timer
             feedbackEl.textContent = 'Wrong, You lost 20s !';
             timerCount = timerCount - 20;
         }
-
         feedbackEl.setAttribute('class', 'feedback');
+        // set a timer to show the answer feedback only for 1 second
         setTimeout(function () {
             feedbackEl.setAttribute('class', 'feedback hide');
         }, 1000);
-
     }
 })
 
@@ -89,10 +92,57 @@ q3.addEventListener('click', function (event) {
         var answer = element.getAttribute('value')
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
+            q4.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Correct !';
+        } else {
+            this.setAttribute('style', 'display:none');
+            q4.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Wrong, You lost 20s !';
+            timerCount = timerCount - 20;
+        }
+
+        feedbackEl.setAttribute('class', 'feedback');
+        setTimeout(function () {
+            feedbackEl.setAttribute('class', 'feedback hide');
+        }, 1000);
+    }
+})
+
+q4.addEventListener('click', function (event) {
+    var element = event.target;
+    if (element.matches('li')) {
+        var answer = element.getAttribute('value')
+        if (answer === "correct") {
+            this.setAttribute('style', 'display:none');
+            q5.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Correct !';
+        } else {
+            this.setAttribute('style', 'display:none');
+            q5.setAttribute('style', 'display:block');
+            feedbackEl.textContent = 'Wrong, You lost 20s !';
+            timerCount = timerCount - 20;
+        }
+
+        feedbackEl.setAttribute('class', 'feedback');
+        setTimeout(function () {
+            feedbackEl.setAttribute('class', 'feedback hide');
+        }, 1000);
+    }
+})
+
+
+q5.addEventListener('click', function (event) {
+    var element = event.target;
+    if (element.matches('li')) {
+        var answer = element.getAttribute('value')
+        if (answer === "correct") {
+            this.setAttribute('style', 'display:none');
+            // direct to recordScore page
             recordScore.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
+            // direct to recordScore page
             recordScore.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Wrong, You lost 20s !';
             timerCount = timerCount - 20;
@@ -105,7 +155,6 @@ q3.addEventListener('click', function (event) {
 
     };
     stopTimer();
-
 })
 
 
@@ -119,13 +168,24 @@ submitButton.addEventListener('click', function (event) {
 })
 
 
-
 goBack.addEventListener('click', function () {
     scoreBoard.setAttribute('style', 'display:none');
     startPage.setAttribute('style', 'display:block');
     navBar.setAttribute('class', 'navigation');
+    clear.setAttribute('style', '');
     timeLeft.textContent = "100";
 })
+
+// set a lick event to allow navigating to scoreBoard page
+navScore.addEventListener('click', function (event) {
+    var element = event.target;
+    if (element.matches('li')) {
+        startPage.setAttribute('style', 'display:none');
+        recordScore.setAttribute('style', 'display:none');
+        scoreBoard.setAttribute('style', 'display:block');
+    };
+})
+
 
 
 function saveScore() {
@@ -137,11 +197,11 @@ function saveScore() {
 }
 
 function renderScore() {
-
+    // convert stored playScoreSum data in to an object 
     var playerScoreSum = JSON.parse(localStorage.getItem("playerScoreSum"));
     playerScoreEl.innerHTML = "";
 
-    // Render a new li for each playerInfo
+    // Render a new li elements for each playerInfo
     for (var i = 0; i < playerScoreSum.length; i++) {
 
         var li = document.createElement("li");
@@ -153,9 +213,13 @@ function renderScore() {
 }
 
 clear.addEventListener('click', function () {
+    // clear all local storage data
     localStorage.clear();
+    // clear total score on the board
     playerScoreSum = [];
     playerScoreEl.innerHTML = "";
+    // hide clear button after clearing
+    clear.setAttribute('style', 'display:none');
 }
 )
 
@@ -166,8 +230,15 @@ function startTimer() {
         timeLeft.textContent = timerCount;
 
         if (timerCount === 0) {
-            score = timeLeft;
+            score = 0;
             clearInterval(timer);
+            // hide all question pages and show the recordScore page
+            q1.setAttribute('style', 'display:none');
+            q2.setAttribute('style', 'display:none');
+            q3.setAttribute('style', 'display:none');
+            q4.setAttribute('style', 'display:none');
+            q5.setAttribute('style', 'display:none');
+            recordScore.setAttribute('style', 'display:block');
         };
 
     }, 1000);
