@@ -182,10 +182,14 @@ navScore.addEventListener('click', function (event) {
     if (element.matches('li')) {
         startPage.setAttribute('style', 'display:none');
         recordScore.setAttribute('style', 'display:none');
+        q1.setAttribute('style', 'display:none');
+        q2.setAttribute('style', 'display:none');
+        q3.setAttribute('style', 'display:none');
+        q4.setAttribute('style', 'display:none');
+        q5.setAttribute('style', 'display:none');
         scoreBoard.setAttribute('style', 'display:block');
     };
 })
-
 
 
 function saveScore() {
