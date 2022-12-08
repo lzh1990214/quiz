@@ -16,6 +16,7 @@ var clear = document.getElementById('clearScore')
 var result = document.createElement('p')
 var questionPage = document.querySelector('.questionPage')
 var timeLeft = document.getElementById('timeLeft')
+var pikaEl = document.getElementById('pika')
 var feedbackEl = document.getElementById('feedback')
 var playerName = document.getElementById('enterName')
 var playerScoreEl = document.getElementById('playerScore')
@@ -48,6 +49,7 @@ q1.addEventListener('click', function (event) {
             this.setAttribute('style', 'display:none');
             q2.setAttribute('style', 'display:block');
             // send feedback 'correct!'
+            pikaEl.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
@@ -55,12 +57,9 @@ q1.addEventListener('click', function (event) {
             // send feedback of wrong answer and reduce 20s from the timer
             feedbackEl.textContent = 'Wrong, You lost 20s !';
             timerCount = timerCount - 20;
-        }
-        feedbackEl.setAttribute('class', 'feedback');
-        // set a timer to show the answer feedback only for 1 second
-        setTimeout(function () {
-            feedbackEl.setAttribute('class', 'feedback hide');
-        }, 1000);
+        };
+        
+        hideFeedback();
     }
 })
 
@@ -71,18 +70,16 @@ q2.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             q3.setAttribute('style', 'display:block');
+            pikaEl.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
             q3.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Wrong, You lost 20s !';
             timerCount = timerCount - 20;
-        }
+        };
 
-        feedbackEl.setAttribute('class', 'feedback');
-        setTimeout(function () {
-            feedbackEl.setAttribute('class', 'feedback hide');
-        }, 1000);
+        hideFeedback();
     }
 })
 
@@ -93,18 +90,16 @@ q3.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             q4.setAttribute('style', 'display:block');
+            pikaEl.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
             q4.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Wrong, You lost 20s !';
             timerCount = timerCount - 20;
-        }
+        };
 
-        feedbackEl.setAttribute('class', 'feedback');
-        setTimeout(function () {
-            feedbackEl.setAttribute('class', 'feedback hide');
-        }, 1000);
+        hideFeedback();
     }
 })
 
@@ -115,18 +110,16 @@ q4.addEventListener('click', function (event) {
         if (answer === "correct") {
             this.setAttribute('style', 'display:none');
             q5.setAttribute('style', 'display:block');
+            pikaEl.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
             q5.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Wrong, You lost 20s !';
             timerCount = timerCount - 20;
-        }
+        };
 
-        feedbackEl.setAttribute('class', 'feedback');
-        setTimeout(function () {
-            feedbackEl.setAttribute('class', 'feedback hide');
-        }, 1000);
+        hideFeedback();
     }
 })
 
@@ -139,6 +132,7 @@ q5.addEventListener('click', function (event) {
             this.setAttribute('style', 'display:none');
             // direct to recordScore page
             recordScore.setAttribute('style', 'display:block');
+            pikaEl.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Correct !';
         } else {
             this.setAttribute('style', 'display:none');
@@ -146,13 +140,9 @@ q5.addEventListener('click', function (event) {
             recordScore.setAttribute('style', 'display:block');
             feedbackEl.textContent = 'Wrong, You lost 20s !';
             timerCount = timerCount - 20;
-        }
+        };
 
-        feedbackEl.setAttribute('class', 'feedback');
-        setTimeout(function () {
-            feedbackEl.setAttribute('class', 'feedback hide');
-        }, 1000);
-
+        hideFeedback();
     };
     stopTimer();
 })
@@ -184,7 +174,7 @@ navScore.addEventListener('click', function (event) {
         // stop the timer when getting out of the quiz
         stopTimer();
         timeLeft.textContent = "100";
-        
+
         startPage.setAttribute('style', 'display:none');
         recordScore.setAttribute('style', 'display:none');
         q1.setAttribute('style', 'display:none');
@@ -196,13 +186,28 @@ navScore.addEventListener('click', function (event) {
     };
 })
 
+// set a timer to show the answer feedback only for 1 second
+function hideFeedback() {
+    feedbackEl.setAttribute('class', 'feedback');
+    setTimeout(function () {
+        feedbackEl.setAttribute('class', 'feedback hide');
+        pikaEl.setAttribute('style', 'display:none');
+    }, 1000);
+}
 
 function saveScore() {
-    // set object 'playerInfo' with two inputs: playerName and score
-    var playerInfo = playerName.value.trim() + ' - ' + timerCount;
-    // push 'playerInfo' into array 'playerScoreSum'.
-    playerScoreSum.push(playerInfo);
-    localStorage.setItem("playerScoreSum", JSON.stringify(playerScoreSum));
+    if (timerCount >= 0) {
+        // set object 'playerInfo' with two inputs: playerName and score
+        var playerInfo = playerName.value.trim() + ' - ' + timerCount + ' points';
+        // push 'playerInfo' into array 'playerScoreSum'.
+        playerScoreSum.push(playerInfo);
+        localStorage.setItem("playerScoreSum", JSON.stringify(playerScoreSum));
+    } else {
+        var playerInfo = playerName.value.trim() + ' - ' + 0 + ' points';
+        // push 'playerInfo' into array 'playerScoreSum'.
+        playerScoreSum.push(playerInfo);
+        localStorage.setItem("playerScoreSum", JSON.stringify(playerScoreSum));
+    }
 }
 
 function renderScore() {
@@ -257,6 +262,7 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(timer);
+    timeLeft.textContent = "0";
     return timerCount;
 }
 

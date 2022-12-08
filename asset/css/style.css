@@ -29,8 +29,6 @@ nav ul {
   line-height: 200%;
   border: 6px solid #623108;
   border-radius: 21px;
-
-
   background-color: white;
   padding: 10px;
 }
@@ -90,6 +88,7 @@ section ul :hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  cursor: pointer;
 }
 
 
@@ -163,6 +162,13 @@ textarea {
   color: #c52018;
 }
 
+#pika {
+  margin-left: auto;
+  margin-right: auto;
+  width: 5%;
+  margin-bottom: 20px;
+}
+
 
 #scoreBoard {
   text-align: center;
@@ -209,11 +215,24 @@ section {
     background-color: #e65a41;
     border: none;
     color: white;
-    width: 150px;
-    height: 90px;
+    width: 220px;
     text-align: center;
     font-size: 100%;
-    margin: 10px;
     cursor: pointer;
+    margin: 20px 0 10px 0;
+    padding: 10px 10px;
   }
+
+
+  #pika {
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    margin-bottom: 10px;
+  }
+
+  * {
+    box-sizing: content-box;
+  }
+
 }
